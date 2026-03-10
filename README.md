@@ -16,9 +16,14 @@ After Day 0 (when backend infrastructure is decommissioned), this repo is the **
 
 ```json
 {
-  "hibernationEnabled": true,
+  "hibernationStartAt": "2026-03-09T00:00:00.000Z",
   "closureDate": "31 May 2026",
   "portOutDeadline": "31 May 2026",
+  "environments": {
+    "dev": true,
+    "staging": true,
+    "production": true
+  },
   "links": {
     "home": "https://www.slicemobile.com",
     "terms": "https://www.slicemobile.com/terms-conditions",
@@ -31,9 +36,12 @@ After Day 0 (when backend infrastructure is decommissioned), this repo is the **
 
 | Field | Type | Description |
 |---|---|---|
-| `hibernationEnabled` | boolean | Controls whether the app shows the hibernation flow on launch. Set to `false` if funding is secured and normal service resumes. |
+| `hibernationStartAt` | ISO datetime string | When the hibernation flow activates. The app computes `hibernationEnabled = now >= hibernationStartAt`. Set this in advance — the app self-activates at the right moment without needing a midnight push. |
 | `closureDate` | string | The date shown to users as the service end date (e.g. `"31 May 2026"`). |
 | `portOutDeadline` | string | The deadline shown to users for porting their number out (e.g. `"31 May 2026"`). |
+| `environments.dev` | boolean | Whether the hibernation flow is active in dev builds. |
+| `environments.staging` | boolean | Whether the hibernation flow is active in staging builds. |
+| `environments.production` | boolean | Whether the hibernation flow is active in production builds. |
 | `links.home` | string | Main website URL. Update this when `slicemobile.com` goes offline. |
 | `links.terms` | string | Terms & Conditions URL. |
 | `links.privacy` | string | Privacy Policy URL. |
@@ -44,6 +52,12 @@ After Day 0 (when backend infrastructure is decommissioned), this repo is the **
 
 ## Common scenarios
 
+**Activating hibernation in production:**
+Set `hibernationStartAt` to the intended activation datetime in ISO format (e.g. `"2026-04-01T08:00:00.000Z"`). Commit whenever you like — the app will self-activate when the clock passes that time. No midnight push needed.
+
+**Testing the hibernation flow before going live:**
+Set `environments.production` to `false` and `environments.dev`/`environments.staging` to `true`. Dev and staging builds will show the hibernation flow; production users will not be affected.
+
 **The closure date changes:**
 Update `closureDate` and/or `portOutDeadline` and commit.
 
@@ -51,7 +65,7 @@ Update `closureDate` and/or `portOutDeadline` and commit.
 Update all affected `links.*` fields to point at alternative URLs (e.g. GitHub Pages at `paraspara1.github.io/...`) and commit.
 
 **Funding is secured and the app should return to normal:**
-Set `hibernationEnabled` to `false` and commit. Users who open the app after that will bypass the hibernation flow. A full App Store update will still be needed to restore all normal functionality.
+Set `hibernationStartAt` to a far-future date (e.g. `"2099-01-01T00:00:00.000Z"`). Users who open the app after that will bypass the hibernation flow. A full App Store update will still be needed to restore all normal functionality.
 
 ---
 
