@@ -1,0 +1,12 @@
+{
+  "hibernationEnabled": true,
+  "closureDate": "31 May 2026",
+  "portOutDeadline": "31 May 2026",
+  "links": {
+    "home": "https://www.slicemobile.com",
+    "terms": "https://www.slicemobile.com/terms-conditions",
+    "privacy": "https://www.slicemobile.com/privacy-policy",
+    "closureFaq": "https://help.slicemobile.com/en/",
+    "dataRequest": "https://www.slicemobile.com/privacy-policy"
+  }
+}
