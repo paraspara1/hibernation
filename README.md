@@ -14,40 +14,39 @@ After Day 0 (when backend infrastructure is decommissioned), this repo is the **
 
 ## Config reference
 
+The config root has three keys — `dev`, `staging`, and `production` — one per environment. The app uses the object for the current build (e.g. production builds use `production`). Each object has the same shape:
+
 ```json
 {
-  "hibernationStartAt": "2026-03-09T00:00:00.000Z",
-  "closureDate": "31 May 2026",
-  "portOutDeadline": "31 May 2026",
-  "environments": {
-    "dev": true,
-    "staging": true,
-    "production": true
+  "dev": {
+    "hibernationStartAt": "2026-03-09T00:00:00.000Z",
+    "portOutDeadlineAt": "2026-05-31T00:00:00.000Z",
+    "closureDate": "31 May 2026",
+    "portOutDeadline": "31 May 2026",
+    "links": {
+      "home": "https://www.slicemobile.com",
+      "terms": "https://www.slicemobile.com/terms-conditions",
+      "privacy": "https://www.slicemobile.com/privacy-policy",
+      "closureFaq": "https://help.slicemobile.com/en/",
+      "dataRequest": "https://www.slicemobile.com/privacy-policy"
+    }
   },
-  "links": {
-    "home": "https://www.slicemobile.com",
-    "terms": "https://www.slicemobile.com/terms-conditions",
-    "privacy": "https://www.slicemobile.com/privacy-policy",
-    "closureFaq": "https://help.slicemobile.com/en/",
-    "dataRequest": "https://www.slicemobile.com/privacy-policy"
-  }
+  "staging": { ... },
+  "production": { ... }
 }
 ```
 
-| Field                     | Type         | Description                                                                                                                                                  |
-| ------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `hibernationStartAt`      | ISO datetime | When the 3-screen warning flow activates (closing notice → port your number → need help). Set in advance; the app self-activates when the clock passes this. |
-| `portOutDeadlineAt`       | ISO datetime | When the final "IT'S BEEN SLICE." screen activates (port-out deadline has passed, service fully closed).                                                     |
-| `closureDate`             | string       | Display string for the service end date, shown in-app (e.g. `"31 May 2026"`).                                                                                |
-| `portOutDeadline`         | string       | Display string for the port-out deadline, shown in-app (e.g. `"31 May 2026"`).                                                                               |
-| `environments.dev`        | boolean      | Whether hibernation is active in dev builds.                                                                                                                 |
-| `environments.staging`    | boolean      | Whether hibernation is active in staging builds.                                                                                                             |
-| `environments.production` | boolean      | Whether hibernation is active in production builds.                                                                                                          |
-| `links.home`              | string       | Main website URL. Update when `slicemobile.com` goes offline.                                                                                                |
-| `links.terms`             | string       | Terms & Conditions URL.                                                                                                                                      |
-| `links.privacy`           | string       | Privacy Policy URL.                                                                                                                                          |
-| `links.closureFaq`        | string       | FAQ page for the closure. Update when the help site goes offline.                                                                                            |
-| `links.dataRequest`       | string       | URL for users to submit a data request.                                                                                                                      |
+| Field                | Type         | Description                                                                                                                                                  |
+| -------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `hibernationStartAt` | ISO datetime | When the 3-screen warning flow activates (closing notice → port your number → need help). Set in advance; the app self-activates when the clock passes this. |
+| `portOutDeadlineAt`  | ISO datetime | When the final "IT'S BEEN SLICE." screen activates (port-out deadline has passed, service fully closed).                                                     |
+| `closureDate`        | string       | Display string for the service end date, shown in-app (e.g. `"31 May 2026"`).                                                                                |
+| `portOutDeadline`    | string       | Display string for the port-out deadline, shown in-app (e.g. `"31 May 2026"`).                                                                               |
+| `links.home`         | string       | Main website URL. Update when `slicemobile.com` goes offline.                                                                                                |
+| `links.terms`        | string       | Terms & Conditions URL.                                                                                                                                      |
+| `links.privacy`      | string       | Privacy Policy URL.                                                                                                                                          |
+| `links.closureFaq`   | string       | FAQ page for the closure. Update when the help site goes offline.                                                                                            |
+| `links.dataRequest`  | string       | URL for users to submit a data request.                                                                                                                      |
 
 ---
 
@@ -75,7 +74,7 @@ Set `hibernationStartAt` to the intended datetime in ISO format (e.g. `"2026-04-
 Set `portOutDeadlineAt` to the port-out deadline datetime. The final screen appears automatically once that time passes.
 
 **Testing before going live:**
-Set `environments.production` to `false`, keep `dev` and `staging` true. Your team sees the flow; production users don't.
+Use different payloads per environment: e.g. set `dev` and `staging` with past dates so the flow is active there, and set `production` with far-future dates so production users don't see the flow until you're ready.
 
 **The closure or deadline dates change:**
 Update `closureDate`, `portOutDeadline` (display strings) and `portOutDeadlineAt` (machine datetime) accordingly and commit.
