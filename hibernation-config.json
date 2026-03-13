@@ -13,12 +13,12 @@
     }
   },
   "staging": {
-    "hibernationStartAt": "2026-03-01T00:00:00.000Z",
-    "portOutDeadlineAt": "2026-03-15T00:00:00.000Z",
+    "hibernationStartAt": "2026-03-12T00:00:00.000Z",
+    "portOutDeadlineAt": "2026-03-17T00:00:00.000Z",
     "closureDate": "1 March 2026",
     "portOutDeadline": "15 March 2026",
     "links": {
-      "home": "https://www.slicemobile.com",
+      "home": "https://www.google.com",
       "terms": "https://www.slicemobile.com/terms-conditions",
       "privacy": "https://www.slicemobile.com/privacy-policy",
       "closureFaq": "https://help.slicemobile.com/en/",
