@@ -22,7 +22,7 @@
       "terms": "https://www.slicemobile.com/terms-conditions",
       "privacy": "https://www.slicemobile.com/privacy-policy",
       "closureFaq": "https://help.slicemobile.com/en/",
-      "dataRequest": "https://www.slicemobile.com/privacy-policy"
+      "dataRequest": "https://docs.google.com/forms/d/e/1FAIpQLSdWib3mQeKcpwNZq5bsC4fSjGcX5q-QXUiFp7qf9yD48aRS0w/viewform?usp=dialog"
     }
   },
   "production": {
@@ -35,7 +35,7 @@
       "terms": "https://www.slicemobile.com/terms-conditions",
       "privacy": "https://www.slicemobile.com/privacy-policy",
       "closureFaq": "https://help.slicemobile.com/en/",
-      "dataRequest": "https://www.slicemobile.com/privacy-policy"
+      "dataRequest": "https://docs.google.com/forms/d/e/1FAIpQLSdWib3mQeKcpwNZq5bsC4fSjGcX5q-QXUiFp7qf9yD48aRS0w/viewform?usp=dialog"
     }
   }
 }
