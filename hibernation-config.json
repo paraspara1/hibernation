@@ -1,7 +1,7 @@
 {
   "dev": {
-    "hibernationStartAt": "2026-03-01T00:00:00.000Z",
-    "portOutDeadlineAt": "2026-04-10T00:00:00.000Z",
+    "hibernationStartAt": "2026-03-18T00:00:00.000Z",
+    "portOutDeadlineAt": "2026-04-02T00:00:00.000Z",
     "closureDate": "1st April 2024",
     "portOutDeadline": "2nd April 2024",
     "links": {
@@ -13,9 +13,9 @@
     }
   },
   "staging": {
-    "hibernationStartAt": "2026-03-12T00:00:00.000Z",
-    "portOutDeadlineAt": "2026-04-02T00:00:00.000Z",
-    "closureDate": "2nd April 2026",
+    "hibernationStartAt": "2026-03-18T00:00:00.000Z",
+    "portOutDeadlineAt": "2026-06-05T00:00:00.000Z",
+    "closureDate": "6th June 2026",
     "portOutDeadline": "5th June 2026",
     "links": {
       "home": "https://www.google.com",
