@@ -1,7 +1,7 @@
 {
   "dev": {
-    "hibernationStartAt": "2026-03-18T00:00:00.000Z",
-    "portOutDeadlineAt": "2026-04-02T00:00:00.000Z",
+    "hibernationStartAt": "2027-03-18T00:00:00.000Z",
+    "portOutDeadlineAt": "2027-04-02T00:00:00.000Z",
     "closureDate": "1st April 2024",
     "portOutDeadline": "2nd April 2024",
     "links": {
